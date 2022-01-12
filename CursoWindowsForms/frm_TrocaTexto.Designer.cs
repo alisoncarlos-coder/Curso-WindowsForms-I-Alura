@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frm_TrocaTexto));
             this.lbl_Titulo = new System.Windows.Forms.Label();
             this.btn_Sair = new System.Windows.Forms.Button();
             this.lbl_trocar_texto_label = new System.Windows.Forms.Button();
@@ -87,6 +88,7 @@
             this.Controls.Add(this.btn_Sair);
             this.Controls.Add(this.lbl_Titulo);
             this.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "frm_TrocaTexto";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
