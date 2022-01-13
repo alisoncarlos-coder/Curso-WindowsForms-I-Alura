@@ -64,17 +64,16 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="ChecaForcaSenha.cs" />
-    <Compile Include="Frm_DemonstracaoKey.cs">
+    <Compile Include="FormulariosCurso1\Frm_DemonstracaoKey.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Frm_DemonstracaoKey.Designer.cs">
+    <Compile Include="FormulariosCurso1\Frm_DemonstracaoKey.Designer.cs">
       <DependentUpon>Frm_DemonstracaoKey.cs</DependentUpon>
     </Compile>
-    <Compile Include="frm_Mascaras.cs">
+    <Compile Include="FormulariosCurso1\frm_Mascaras.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="frm_Mascaras.Designer.cs">
+    <Compile Include="FormulariosCurso1\frm_Mascaras.Designer.cs">
       <DependentUpon>frm_Mascaras.cs</DependentUpon>
     </Compile>
     <Compile Include="Frm_Principal.cs">
@@ -83,53 +82,70 @@
     <Compile Include="Frm_Principal.Designer.cs">
       <DependentUpon>Frm_Principal.cs</DependentUpon>
     </Compile>
-    <Compile Include="frm_TrocaTexto.cs">
+    <Compile Include="FormulariosCurso1\frm_TrocaTexto.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="frm_TrocaTexto.Designer.cs">
+    <Compile Include="FormulariosCurso1\frm_TrocaTexto.Designer.cs">
       <DependentUpon>frm_TrocaTexto.cs</DependentUpon>
     </Compile>
-    <Compile Include="Frm_ValidaCPF.cs">
+    <Compile Include="FormulariosCurso1\Frm_ValidaCPF.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Frm_ValidaCPF.Designer.cs">
+    <Compile Include="FormulariosCurso1\Frm_ValidaCPF.Designer.cs">
       <DependentUpon>Frm_ValidaCPF.cs</DependentUpon>
     </Compile>
-    <Compile Include="Frm_ValidaCPFMessageBox.cs">
+    <Compile Include="FormulariosCurso1\Frm_ValidaCPFMessageBox.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Frm_ValidaCPFMessageBox.Designer.cs">
+    <Compile Include="FormulariosCurso1\Frm_ValidaCPFMessageBox.Designer.cs">
       <DependentUpon>Frm_ValidaCPFMessageBox.cs</DependentUpon>
     </Compile>
-    <Compile Include="frm_ValidaSenha.cs">
+    <Compile Include="FormulariosCurso1\frm_ValidaSenha.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="frm_ValidaSenha.Designer.cs">
+    <Compile Include="FormulariosCurso1\frm_ValidaSenha.Designer.cs">
       <DependentUpon>frm_ValidaSenha.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Frm_Principal_Menu.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Frm_Principal_Menu.Designer.cs">
+      <DependentUpon>Frm_Principal_Menu.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Frm_Principal_Menu_MDI.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Frm_Principal_Menu_MDI.Designer.cs">
+      <DependentUpon>Frm_Principal_Menu_MDI.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Utilitarios.cs" />
-    <EmbeddedResource Include="Frm_DemonstracaoKey.resx">
+    <EmbeddedResource Include="FormulariosCurso1\Frm_DemonstracaoKey.resx">
       <DependentUpon>Frm_DemonstracaoKey.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="frm_Mascaras.resx">
+    <EmbeddedResource Include="FormulariosCurso1\frm_Mascaras.resx">
       <DependentUpon>frm_Mascaras.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Frm_Principal.resx">
       <DependentUpon>Frm_Principal.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="frm_TrocaTexto.resx">
+    <EmbeddedResource Include="FormulariosCurso1\frm_TrocaTexto.resx">
       <DependentUpon>frm_TrocaTexto.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Frm_ValidaCPF.resx">
+    <EmbeddedResource Include="FormulariosCurso1\Frm_ValidaCPF.resx">
       <DependentUpon>Frm_ValidaCPF.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Frm_ValidaCPFMessageBox.resx">
+    <EmbeddedResource Include="FormulariosCurso1\Frm_ValidaCPFMessageBox.resx">
       <DependentUpon>Frm_ValidaCPFMessageBox.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="frm_ValidaSenha.resx">
+    <EmbeddedResource Include="FormulariosCurso1\frm_ValidaSenha.resx">
       <DependentUpon>frm_ValidaSenha.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Frm_Principal_Menu.resx">
+      <DependentUpon>Frm_Principal_Menu.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Frm_Principal_Menu_MDI.resx">
+      <DependentUpon>Frm_Principal_Menu_MDI.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -139,6 +155,7 @@
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
     </Compile>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -167,6 +184,25 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Frm_Principal.ico" />
+    <Content Include="Imagens\Frm_DemonstracaoKey.ico" />
+    <Content Include="Imagens\Frm_DemonstracaoKey.png" />
+    <Content Include="Imagens\Frm_HelloWorld.ico" />
+    <Content Include="Imagens\Frm_HelloWorld.png" />
+    <Content Include="Imagens\Frm_Mascara.ico" />
+    <Content Include="Imagens\Frm_Mascara.png" />
+    <Content Include="Imagens\Frm_Principal.ico" />
+    <Content Include="Imagens\Frm_ValidaCPF.ico" />
+    <Content Include="Imagens\Frm_ValidaCPF.png" />
+    <Content Include="Imagens\Frm_ValidaCPF2.ico" />
+    <Content Include="Imagens\Frm_ValidaCPF2.png" />
+    <Content Include="Imagens\Frm_ValidaSenha.ico" />
+    <Content Include="Imagens\Frm_ValidaSenha.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\CursoWindowsFormsLib\CursoWindowsFormsLib.csproj">
+      <Project>{99d602a3-d569-47fc-bc83-62db1f30fc28}</Project>
+      <Name>CursoWindowsFormsLib</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
