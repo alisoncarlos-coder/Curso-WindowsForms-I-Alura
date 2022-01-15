@@ -40,24 +40,27 @@
             // 
             // lbl_Lower
             // 
+            this.lbl_Lower.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.lbl_Lower.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.lbl_Lower.Location = new System.Drawing.Point(501, 48);
+            this.lbl_Lower.Location = new System.Drawing.Point(382, 48);
             this.lbl_Lower.Name = "lbl_Lower";
             this.lbl_Lower.Size = new System.Drawing.Size(45, 23);
             this.lbl_Lower.TabIndex = 4;
             // 
             // lbl_Upper
             // 
+            this.lbl_Upper.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.lbl_Upper.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.lbl_Upper.Location = new System.Drawing.Point(501, 104);
+            this.lbl_Upper.Location = new System.Drawing.Point(382, 104);
             this.lbl_Upper.Name = "lbl_Upper";
             this.lbl_Upper.Size = new System.Drawing.Size(45, 23);
             this.lbl_Upper.TabIndex = 6;
             // 
             // lbl_Minus
             // 
+            this.lbl_Minus.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.lbl_Minus.AutoSize = true;
-            this.lbl_Minus.Location = new System.Drawing.Point(457, 49);
+            this.lbl_Minus.Location = new System.Drawing.Point(338, 49);
             this.lbl_Minus.Name = "lbl_Minus";
             this.lbl_Minus.Size = new System.Drawing.Size(38, 13);
             this.lbl_Minus.TabIndex = 3;
@@ -65,8 +68,9 @@
             // 
             // lbl_Maius
             // 
+            this.lbl_Maius.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.lbl_Maius.AutoSize = true;
-            this.lbl_Maius.Location = new System.Drawing.Point(457, 105);
+            this.lbl_Maius.Location = new System.Drawing.Point(338, 105);
             this.lbl_Maius.Name = "lbl_Maius";
             this.lbl_Maius.Size = new System.Drawing.Size(35, 13);
             this.lbl_Maius.TabIndex = 5;
@@ -74,11 +78,14 @@
             // 
             // txt_Msg
             // 
+            this.txt_Msg.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.txt_Msg.Location = new System.Drawing.Point(12, 51);
             this.txt_Msg.Multiline = true;
             this.txt_Msg.Name = "txt_Msg";
             this.txt_Msg.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.txt_Msg.Size = new System.Drawing.Size(439, 244);
+            this.txt_Msg.Size = new System.Drawing.Size(320, 192);
             this.txt_Msg.TabIndex = 2;
             this.txt_Msg.TabStop = false;
             // 
@@ -92,7 +99,8 @@
             // 
             // btn_Limpar
             // 
-            this.btn_Limpar.Location = new System.Drawing.Point(460, 10);
+            this.btn_Limpar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btn_Limpar.Location = new System.Drawing.Point(341, 10);
             this.btn_Limpar.Name = "btn_Limpar";
             this.btn_Limpar.Size = new System.Drawing.Size(86, 23);
             this.btn_Limpar.TabIndex = 1;
@@ -104,7 +112,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(568, 333);
+            this.ClientSize = new System.Drawing.Size(449, 281);
             this.Controls.Add(this.btn_Limpar);
             this.Controls.Add(this.txt_Input);
             this.Controls.Add(this.txt_Msg);

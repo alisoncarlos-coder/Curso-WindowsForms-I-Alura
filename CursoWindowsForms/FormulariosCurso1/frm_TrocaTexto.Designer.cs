@@ -49,8 +49,9 @@
             // 
             // btn_Sair
             // 
+            this.btn_Sair.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.btn_Sair.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_Sair.Location = new System.Drawing.Point(204, 321);
+            this.btn_Sair.Location = new System.Drawing.Point(167, 260);
             this.btn_Sair.Margin = new System.Windows.Forms.Padding(4);
             this.btn_Sair.Name = "btn_Sair";
             this.btn_Sair.Size = new System.Drawing.Size(275, 32);
@@ -82,7 +83,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(683, 396);
+            this.ClientSize = new System.Drawing.Size(446, 296);
             this.Controls.Add(this.txt_Digitado);
             this.Controls.Add(this.lbl_trocar_texto_label);
             this.Controls.Add(this.btn_Sair);

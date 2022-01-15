@@ -38,6 +38,8 @@
             // 
             // txt_Senha
             // 
+            this.txt_Senha.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.txt_Senha.Location = new System.Drawing.Point(88, 34);
             this.txt_Senha.Name = "txt_Senha";
             this.txt_Senha.PasswordChar = '*';
@@ -56,6 +58,7 @@
             // 
             // btn_Limpa
             // 
+            this.btn_Limpa.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.btn_Limpa.Location = new System.Drawing.Point(247, 32);
             this.btn_Limpa.Name = "btn_Limpa";
             this.btn_Limpa.Size = new System.Drawing.Size(75, 23);
@@ -66,6 +69,7 @@
             // 
             // btn_VerSenha
             // 
+            this.btn_VerSenha.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.btn_VerSenha.Location = new System.Drawing.Point(247, 71);
             this.btn_VerSenha.Name = "btn_VerSenha";
             this.btn_VerSenha.Size = new System.Drawing.Size(75, 23);
@@ -76,6 +80,7 @@
             // 
             // lbl_ForcaSenha
             // 
+            this.lbl_ForcaSenha.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.lbl_ForcaSenha.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.lbl_ForcaSenha.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbl_ForcaSenha.Location = new System.Drawing.Point(44, 68);
