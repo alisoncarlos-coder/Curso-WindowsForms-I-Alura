@@ -28,6 +28,8 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Frm_Principal_Menu_UC));
             this.Mnu_Principal = new System.Windows.Forms.MenuStrip();
             this.arquivoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.novoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -37,9 +39,13 @@
             this.validaCPFToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.validaCPFMessageBoxToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.validaSenhaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.fecharTabToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.sairToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.windowsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.Tbc_Principal = new System.Windows.Forms.TabControl();
+            this.Iml_Imagens = new System.Windows.Forms.ImageList(this.components);
+            this.açõesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.arquivoImagemToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.Mnu_Principal.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -47,6 +53,7 @@
             // 
             this.Mnu_Principal.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.arquivoToolStripMenuItem,
+            this.açõesToolStripMenuItem,
             this.windowsToolStripMenuItem});
             this.Mnu_Principal.Location = new System.Drawing.Point(0, 0);
             this.Mnu_Principal.Name = "Mnu_Principal";
@@ -57,6 +64,7 @@
             // 
             this.arquivoToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.novoToolStripMenuItem,
+            this.fecharTabToolStripMenuItem,
             this.sairToolStripMenuItem});
             this.arquivoToolStripMenuItem.Name = "arquivoToolStripMenuItem";
             this.arquivoToolStripMenuItem.Size = new System.Drawing.Size(61, 20);
@@ -131,6 +139,13 @@
             this.validaSenhaToolStripMenuItem.Text = "Valida Senha";
             this.validaSenhaToolStripMenuItem.Click += new System.EventHandler(this.validaSenhaToolStripMenuItem_Click);
             // 
+            // fecharTabToolStripMenuItem
+            // 
+            this.fecharTabToolStripMenuItem.Name = "fecharTabToolStripMenuItem";
+            this.fecharTabToolStripMenuItem.Size = new System.Drawing.Size(142, 22);
+            this.fecharTabToolStripMenuItem.Text = "Fechar Tab";
+            this.fecharTabToolStripMenuItem.Click += new System.EventHandler(this.fecharTabToolStripMenuItem_Click);
+            // 
             // sairToolStripMenuItem
             // 
             this.sairToolStripMenuItem.Name = "sairToolStripMenuItem";
@@ -148,11 +163,39 @@
             // Tbc_Principal
             // 
             this.Tbc_Principal.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.Tbc_Principal.ImageList = this.Iml_Imagens;
             this.Tbc_Principal.Location = new System.Drawing.Point(0, 24);
             this.Tbc_Principal.Name = "Tbc_Principal";
             this.Tbc_Principal.SelectedIndex = 0;
             this.Tbc_Principal.Size = new System.Drawing.Size(800, 426);
             this.Tbc_Principal.TabIndex = 1;
+            // 
+            // Iml_Imagens
+            // 
+            this.Iml_Imagens.ImageStream = ((System.Windows.Forms.ImageListStreamer)(resources.GetObject("Iml_Imagens.ImageStream")));
+            this.Iml_Imagens.TransparentColor = System.Drawing.Color.Transparent;
+            this.Iml_Imagens.Images.SetKeyName(0, "Frm_DemonstracaoKey.ico");
+            this.Iml_Imagens.Images.SetKeyName(1, "Frm_HelloWorld.ico");
+            this.Iml_Imagens.Images.SetKeyName(2, "Frm_Mascara.ico");
+            this.Iml_Imagens.Images.SetKeyName(3, "Frm_Principal.ico");
+            this.Iml_Imagens.Images.SetKeyName(4, "Frm_ValidaCPF.ico");
+            this.Iml_Imagens.Images.SetKeyName(5, "Frm_ValidaCPF2.ico");
+            this.Iml_Imagens.Images.SetKeyName(6, "Frm_ValidaSenha.ico");
+            // 
+            // açõesToolStripMenuItem
+            // 
+            this.açõesToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.arquivoImagemToolStripMenuItem});
+            this.açõesToolStripMenuItem.Name = "açõesToolStripMenuItem";
+            this.açõesToolStripMenuItem.Size = new System.Drawing.Size(51, 20);
+            this.açõesToolStripMenuItem.Text = "Ações";
+            // 
+            // arquivoImagemToolStripMenuItem
+            // 
+            this.arquivoImagemToolStripMenuItem.Name = "arquivoImagemToolStripMenuItem";
+            this.arquivoImagemToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.arquivoImagemToolStripMenuItem.Text = "Arquivo Imagem";
+            this.arquivoImagemToolStripMenuItem.Click += new System.EventHandler(this.arquivoImagemToolStripMenuItem_Click);
             // 
             // Frm_Principal_Menu_UC
             // 
@@ -165,7 +208,6 @@
             this.Name = "Frm_Principal_Menu_UC";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Principal";
-            this.Load += new System.EventHandler(this.Frm_Principal_Menu_Load);
             this.Mnu_Principal.ResumeLayout(false);
             this.Mnu_Principal.PerformLayout();
             this.ResumeLayout(false);
@@ -187,5 +229,9 @@
         private System.Windows.Forms.ToolStripMenuItem windowsToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem validaSenhaToolStripMenuItem;
         private System.Windows.Forms.TabControl Tbc_Principal;
+        private System.Windows.Forms.ImageList Iml_Imagens;
+        private System.Windows.Forms.ToolStripMenuItem fecharTabToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem açõesToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem arquivoImagemToolStripMenuItem;
     }
 }

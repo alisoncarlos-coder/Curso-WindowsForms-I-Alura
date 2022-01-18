@@ -35,6 +35,8 @@
             // 
             // txt_Digitado
             // 
+            this.txt_Digitado.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.txt_Digitado.Location = new System.Drawing.Point(35, 110);
             this.txt_Digitado.Name = "txt_Digitado";
             this.txt_Digitado.Size = new System.Drawing.Size(253, 20);
@@ -72,7 +74,7 @@
             this.Controls.Add(this.lbl_trocar_texto_label);
             this.Controls.Add(this.lbl_Titulo);
             this.Name = "Frm_TrocaTexto_UC";
-            this.Size = new System.Drawing.Size(508, 329);
+            this.Size = new System.Drawing.Size(467, 311);
             this.ResumeLayout(false);
             this.PerformLayout();
 
