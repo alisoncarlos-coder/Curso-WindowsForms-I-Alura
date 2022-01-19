@@ -41,11 +41,13 @@
             this.validaSenhaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.fecharTabToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.sairToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.açõesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.arquivoImagemToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.windowsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.Tbc_Principal = new System.Windows.Forms.TabControl();
             this.Iml_Imagens = new System.Windows.Forms.ImageList(this.components);
-            this.açõesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.arquivoImagemToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.conectarToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.desconectarToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.Mnu_Principal.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -63,6 +65,8 @@
             // arquivoToolStripMenuItem
             // 
             this.arquivoToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.conectarToolStripMenuItem,
+            this.desconectarToolStripMenuItem,
             this.novoToolStripMenuItem,
             this.fecharTabToolStripMenuItem,
             this.sairToolStripMenuItem});
@@ -81,7 +85,7 @@
             this.validaSenhaToolStripMenuItem});
             this.novoToolStripMenuItem.Name = "novoToolStripMenuItem";
             this.novoToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Alt | System.Windows.Forms.Keys.N)));
-            this.novoToolStripMenuItem.Size = new System.Drawing.Size(142, 22);
+            this.novoToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.novoToolStripMenuItem.Text = "Novo";
             // 
             // demonstraçãoKeyToolStripMenuItem
@@ -142,7 +146,7 @@
             // fecharTabToolStripMenuItem
             // 
             this.fecharTabToolStripMenuItem.Name = "fecharTabToolStripMenuItem";
-            this.fecharTabToolStripMenuItem.Size = new System.Drawing.Size(142, 22);
+            this.fecharTabToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.fecharTabToolStripMenuItem.Text = "Fechar Tab";
             this.fecharTabToolStripMenuItem.Click += new System.EventHandler(this.fecharTabToolStripMenuItem_Click);
             // 
@@ -150,9 +154,24 @@
             // 
             this.sairToolStripMenuItem.Name = "sairToolStripMenuItem";
             this.sairToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Alt | System.Windows.Forms.Keys.S)));
-            this.sairToolStripMenuItem.Size = new System.Drawing.Size(142, 22);
+            this.sairToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.sairToolStripMenuItem.Text = "Sair";
             this.sairToolStripMenuItem.Click += new System.EventHandler(this.sairToolStripMenuItem_Click);
+            // 
+            // açõesToolStripMenuItem
+            // 
+            this.açõesToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.arquivoImagemToolStripMenuItem});
+            this.açõesToolStripMenuItem.Name = "açõesToolStripMenuItem";
+            this.açõesToolStripMenuItem.Size = new System.Drawing.Size(51, 20);
+            this.açõesToolStripMenuItem.Text = "Ações";
+            // 
+            // arquivoImagemToolStripMenuItem
+            // 
+            this.arquivoImagemToolStripMenuItem.Name = "arquivoImagemToolStripMenuItem";
+            this.arquivoImagemToolStripMenuItem.Size = new System.Drawing.Size(163, 22);
+            this.arquivoImagemToolStripMenuItem.Text = "Arquivo Imagem";
+            this.arquivoImagemToolStripMenuItem.Click += new System.EventHandler(this.arquivoImagemToolStripMenuItem_Click);
             // 
             // windowsToolStripMenuItem
             // 
@@ -182,20 +201,19 @@
             this.Iml_Imagens.Images.SetKeyName(5, "Frm_ValidaCPF2.ico");
             this.Iml_Imagens.Images.SetKeyName(6, "Frm_ValidaSenha.ico");
             // 
-            // açõesToolStripMenuItem
+            // conectarToolStripMenuItem
             // 
-            this.açõesToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.arquivoImagemToolStripMenuItem});
-            this.açõesToolStripMenuItem.Name = "açõesToolStripMenuItem";
-            this.açõesToolStripMenuItem.Size = new System.Drawing.Size(51, 20);
-            this.açõesToolStripMenuItem.Text = "Ações";
+            this.conectarToolStripMenuItem.Name = "conectarToolStripMenuItem";
+            this.conectarToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.conectarToolStripMenuItem.Text = "Conectar";
+            this.conectarToolStripMenuItem.Click += new System.EventHandler(this.conectarToolStripMenuItem_Click);
             // 
-            // arquivoImagemToolStripMenuItem
+            // desconectarToolStripMenuItem
             // 
-            this.arquivoImagemToolStripMenuItem.Name = "arquivoImagemToolStripMenuItem";
-            this.arquivoImagemToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-            this.arquivoImagemToolStripMenuItem.Text = "Arquivo Imagem";
-            this.arquivoImagemToolStripMenuItem.Click += new System.EventHandler(this.arquivoImagemToolStripMenuItem_Click);
+            this.desconectarToolStripMenuItem.Name = "desconectarToolStripMenuItem";
+            this.desconectarToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.desconectarToolStripMenuItem.Text = "Desconectar";
+            this.desconectarToolStripMenuItem.Click += new System.EventHandler(this.desconectarToolStripMenuItem_Click);
             // 
             // Frm_Principal_Menu_UC
             // 
@@ -204,6 +222,7 @@
             this.ClientSize = new System.Drawing.Size(800, 450);
             this.Controls.Add(this.Tbc_Principal);
             this.Controls.Add(this.Mnu_Principal);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MainMenuStrip = this.Mnu_Principal;
             this.Name = "Frm_Principal_Menu_UC";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
@@ -233,5 +252,7 @@
         private System.Windows.Forms.ToolStripMenuItem fecharTabToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem açõesToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem arquivoImagemToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem conectarToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem desconectarToolStripMenuItem;
     }
 }
