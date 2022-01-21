@@ -152,24 +152,112 @@ namespace CursoWindowsForms
 
         private void desconectarToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            
+
             var db = new Frm_Questao("icons8_question_mark_96", "Você deseja se desconectar ?");
             db.ShowDialog();
 
             if (db.DialogResult == DialogResult.Yes)
             {
 
-                for (int i = Tbc_Principal.TabPages.Count - 1; i >= 0 ; i+= -1)
+                for (int i = Tbc_Principal.TabPages.Count - 1; i >= 0; i += -1)
                 {
                     Tbc_Principal.TabPages.Remove(Tbc_Principal.TabPages[i]);
                 }
-                
+
                 conectarToolStripMenuItem.Enabled = true;
                 desconectarToolStripMenuItem.Enabled = false;
                 novoToolStripMenuItem.Enabled = false;
                 fecharTabToolStripMenuItem.Enabled = false;
                 arquivoImagemToolStripMenuItem.Enabled = false;
             }
+
+        }
+
+        private void Tbc_Principal_MouseDown(object sender, MouseEventArgs e)
+        {
+            if (e.Button == MouseButtons.Right)
+            {
+                var menuFlutuante = new ContextMenuStrip();
+                var deleteTab = CriaItemMenu("Apagar Tab Selecionada", "DeleteTab");
+                var deleteLeft = CriaItemMenu("Apagar Tabs a Esquerda", "DeleteLeft");
+                var deleteRight = CriaItemMenu("Apagar Tabs a Direita", "DeleteRight");
+                var deleteAll = CriaItemMenu("Apagar Todas as Tabs", "DeleteAll");
+
+                menuFlutuante.Items.Add(deleteTab);
+                menuFlutuante.Items.Add(deleteLeft);
+                menuFlutuante.Items.Add(deleteRight);
+                menuFlutuante.Items.Add(deleteAll);
+
+                menuFlutuante.Show(this, new Point(e.X, e.Y));
+
+                deleteTab.Click += new EventHandler(deleteTab_Click);
+                deleteLeft.Click += new EventHandler(deleteLeft_Click);
+                deleteRight.Click += new EventHandler(deleteRight_Click);
+                deleteAll.Click += new EventHandler(deleteAll_Click);
+            }
+
+            void deleteTab_Click(object sender1, EventArgs e1)
+            {
+                Tbc_Principal.TabPages.Remove(Tbc_Principal.SelectedTab);
+            }
+
+            void deleteLeft_Click(object sender1, EventArgs e1)
+            {
+                apagaTabsEsquerda(Tbc_Principal.SelectedIndex - 1);
+            }
+
+            void deleteRight_Click(object sender1, EventArgs e1)
+            {
+                
+                var tabSelecionada = Tbc_Principal.SelectedIndex + 1;
+                apagaTabsDireita(tabSelecionada);
+            }
+
+            void deleteAll_Click(object sender1, EventArgs e1)
+            {
+                //var ultimaTab = Tbc_Principal.TabPages.Count - 1;
+                //for (int i = ultimaTab; i >= 0; i += -1)
+                //{
+                //    Tbc_Principal.TabPages.Remove(Tbc_Principal.TabPages[i]);
+                //}
+                apagaTabsEsquerda(Tbc_Principal.SelectedIndex - 1);
+                var tabSelecionada = Tbc_Principal.SelectedIndex + 1;
+                apagaTabsDireita(tabSelecionada);
+                Tbc_Principal.TabPages.Remove(Tbc_Principal.SelectedTab);
+            }
+
+            void apagaTabsEsquerda(int tabI)
+            {
+                for (int i = tabI; i >= 0; i += -1)
+                {
+                    Tbc_Principal.TabPages.Remove(Tbc_Principal.TabPages[i]);
+                }
+            }
+
+            void apagaTabsDireita(int tabI)
+            {
+                var ultimaTab = Tbc_Principal.TabPages.Count - 1;
+                for (int i = ultimaTab; i >= tabI; i += -1)
+                {
+                    Tbc_Principal.TabPages.Remove(Tbc_Principal.TabPages[i]);
+                }
+            }
+
+
+            ToolStripMenuItem CriaItemMenu(string texto, string imagem)
+            {
+                var itemMenu = new ToolStripMenuItem();
+                itemMenu.Text = texto;
+
+                Image MyImage = (Image)Properties.Resources.ResourceManager.GetObject(imagem);
+                itemMenu.Image = MyImage;
+
+                return itemMenu;
+            }
+        }
+
+        private void Frm_Principal_Menu_UC_Load(object sender, EventArgs e)
+        {
 
         }
     }

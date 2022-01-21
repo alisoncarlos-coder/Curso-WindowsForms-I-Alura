@@ -37,9 +37,9 @@
             this.trocaTextoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.validaCPFToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.validaCPFMessageBoxToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.validaSenhaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.sairToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.windowsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.validaSenhaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.Mnu_Principal.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -122,6 +122,15 @@
             this.validaCPFMessageBoxToolStripMenuItem.Text = "Valida CPF (MessageBox)";
             this.validaCPFMessageBoxToolStripMenuItem.Click += new System.EventHandler(this.validaCPFMessageBoxToolStripMenuItem_Click);
             // 
+            // validaSenhaToolStripMenuItem
+            // 
+            this.validaSenhaToolStripMenuItem.Image = global::CursoWindowsForms.Properties.Resources.Frm_ValidaSenha;
+            this.validaSenhaToolStripMenuItem.Name = "validaSenhaToolStripMenuItem";
+            this.validaSenhaToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Alt | System.Windows.Forms.Keys.S)));
+            this.validaSenhaToolStripMenuItem.Size = new System.Drawing.Size(243, 22);
+            this.validaSenhaToolStripMenuItem.Text = "Valida Senha";
+            this.validaSenhaToolStripMenuItem.Click += new System.EventHandler(this.validaSenhaToolStripMenuItem_Click);
+            // 
             // sairToolStripMenuItem
             // 
             this.sairToolStripMenuItem.Name = "sairToolStripMenuItem";
@@ -135,15 +144,6 @@
             this.windowsToolStripMenuItem.Name = "windowsToolStripMenuItem";
             this.windowsToolStripMenuItem.Size = new System.Drawing.Size(68, 20);
             this.windowsToolStripMenuItem.Text = "Windows";
-            // 
-            // validaSenhaToolStripMenuItem
-            // 
-            this.validaSenhaToolStripMenuItem.Image = global::CursoWindowsForms.Properties.Resources.Frm_ValidaSenha;
-            this.validaSenhaToolStripMenuItem.Name = "validaSenhaToolStripMenuItem";
-            this.validaSenhaToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Alt | System.Windows.Forms.Keys.S)));
-            this.validaSenhaToolStripMenuItem.Size = new System.Drawing.Size(243, 22);
-            this.validaSenhaToolStripMenuItem.Text = "Valida Senha";
-            this.validaSenhaToolStripMenuItem.Click += new System.EventHandler(this.validaSenhaToolStripMenuItem_Click);
             // 
             // Frm_Principal_Menu
             // 
