@@ -14,14 +14,17 @@ namespace CursoWindowsForms
     {
 
         int ContadorTabs = 0;
+        int ContadorTabUsuarios = 0;
         public Frm_Principal_Menu_UC()
         {
             InitializeComponent();
 
-            desconectarToolStripMenuItem.Enabled = false;
-            novoToolStripMenuItem.Enabled = false;
-            fecharTabToolStripMenuItem.Enabled = false;
-            arquivoImagemToolStripMenuItem.Enabled = false;
+            //Descomentar as linhas abaixo quando alterar a validação do login
+            //desconectarToolStripMenuItem.Enabled = false;
+            //novoToolStripMenuItem.Enabled = false;
+            //fecharTabToolStripMenuItem.Enabled = false;
+            //arquivoImagemToolStripMenuItem.Enabled = false;
+            //cadastrosToolStripMenuItem.Enabled = false;
         }
 
 
@@ -140,6 +143,7 @@ namespace CursoWindowsForms
                     novoToolStripMenuItem.Enabled = true;
                     fecharTabToolStripMenuItem.Enabled = true;
                     arquivoImagemToolStripMenuItem.Enabled = true;
+                    cadastrosToolStripMenuItem.Enabled = true;
 
                     MessageBox.Show("Bem vindo " + login + " !", "Mensagem - Boas Vindas", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
@@ -169,6 +173,7 @@ namespace CursoWindowsForms
                 novoToolStripMenuItem.Enabled = false;
                 fecharTabToolStripMenuItem.Enabled = false;
                 arquivoImagemToolStripMenuItem.Enabled = false;
+                cadastrosToolStripMenuItem.Enabled = false;
             }
 
         }
@@ -198,7 +203,7 @@ namespace CursoWindowsForms
 
             void deleteTab_Click(object sender1, EventArgs e1)
             {
-                Tbc_Principal.TabPages.Remove(Tbc_Principal.SelectedTab);
+                ApagarTab(Tbc_Principal.SelectedTab);
             }
 
             void deleteLeft_Click(object sender1, EventArgs e1)
@@ -223,14 +228,14 @@ namespace CursoWindowsForms
                 apagaTabsEsquerda(Tbc_Principal.SelectedIndex - 1);
                 var tabSelecionada = Tbc_Principal.SelectedIndex + 1;
                 apagaTabsDireita(tabSelecionada);
-                Tbc_Principal.TabPages.Remove(Tbc_Principal.SelectedTab);
+                ApagarTab(Tbc_Principal.SelectedTab);
             }
 
             void apagaTabsEsquerda(int tabI)
             {
                 for (int i = tabI; i >= 0; i += -1)
                 {
-                    Tbc_Principal.TabPages.Remove(Tbc_Principal.TabPages[i]);
+                    ApagarTab(Tbc_Principal.TabPages[i]);
                 }
             }
 
@@ -239,10 +244,20 @@ namespace CursoWindowsForms
                 var ultimaTab = Tbc_Principal.TabPages.Count - 1;
                 for (int i = ultimaTab; i >= tabI; i += -1)
                 {
-                    Tbc_Principal.TabPages.Remove(Tbc_Principal.TabPages[i]);
+                    ApagarTab(Tbc_Principal.TabPages[i]);
                 }
             }
 
+
+            void ApagarTab(TabPage tb)
+            {
+                if (tb.Name == "Tbp_CadastroCliente")
+                {
+                    ContadorTabUsuarios = 0;
+                }
+                
+                Tbc_Principal.TabPages.Remove(tb);
+            }
 
             ToolStripMenuItem CriaItemMenu(string texto, string imagem)
             {
@@ -259,6 +274,27 @@ namespace CursoWindowsForms
         private void Frm_Principal_Menu_UC_Load(object sender, EventArgs e)
         {
 
+        }
+
+        private void clientesToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (ContadorTabUsuarios == 0)
+            {
+                ContadorTabUsuarios += 1;
+                var f = new Frm_CadastroCliente_UC();
+                f.Dock = DockStyle.Fill;
+                var tb = new TabPage();
+                tb.Controls.Add(f);
+                tb.Name = "Tbp_CadastroCliente";
+                tb.Text = "Cadastro de Clientes";
+                tb.ImageIndex = 7;
+                Tbc_Principal.Controls.Add(tb);
+            }
+            else
+            {
+                MessageBox.Show("O cadastro de cliente só pode ser aberto 1 vez.", "Atenção",
+                    MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
         }
     }
 }

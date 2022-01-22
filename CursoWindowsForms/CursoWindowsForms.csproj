@@ -88,16 +88,22 @@
     <Compile Include="FormulariosCurso2\Frm_DemonstracaoKey_UC.Designer.cs">
       <DependentUpon>Frm_DemonstracaoKey_UC.cs</DependentUpon>
     </Compile>
+    <Compile Include="FormulariosCurso2\Frm_CadastroCliente_UC.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="FormulariosCurso2\Frm_CadastroCliente_UC.Designer.cs">
+      <DependentUpon>Frm_CadastroCliente_UC.cs</DependentUpon>
+    </Compile>
     <Compile Include="Frm_Login.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Frm_Login.Designer.cs">
       <DependentUpon>Frm_Login.cs</DependentUpon>
     </Compile>
-    <Compile Include="Frm_Menu_Flutuante.cs">
+    <Compile Include="FormulariosCurso2\Frm_Menu_Flutuante.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Frm_Menu_Flutuante.Designer.cs">
+    <Compile Include="FormulariosCurso2\Frm_Menu_Flutuante.Designer.cs">
       <DependentUpon>Frm_Menu_Flutuante.cs</DependentUpon>
     </Compile>
     <Compile Include="Frm_Principal.cs">
@@ -180,10 +186,13 @@
     <EmbeddedResource Include="FormulariosCurso2\Frm_DemonstracaoKey_UC.resx">
       <DependentUpon>Frm_DemonstracaoKey_UC.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="FormulariosCurso2\Frm_CadastroCliente_UC.resx">
+      <DependentUpon>Frm_CadastroCliente_UC.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Frm_Login.resx">
       <DependentUpon>Frm_Login.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Frm_Menu_Flutuante.resx">
+    <EmbeddedResource Include="FormulariosCurso2\Frm_Menu_Flutuante.resx">
       <DependentUpon>Frm_Menu_Flutuante.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Frm_Principal.resx">
@@ -286,6 +295,9 @@
       <Project>{99d602a3-d569-47fc-bc83-62db1f30fc28}</Project>
       <Name>CursoWindowsFormsLib</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="FormularioCurso3\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
