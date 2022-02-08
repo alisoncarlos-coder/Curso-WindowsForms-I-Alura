@@ -52,6 +52,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
@@ -270,6 +271,7 @@
     <Content Include="Imagens\DeleteLeft.png" />
     <Content Include="Imagens\DeleteRight.png" />
     <Content Include="Imagens\DeleteTab.png" />
+    <Content Include="Imagens\ExcluirBarra.png" />
     <Content Include="Imagens\Frm_DemonstracaoKey.ico" />
     <Content Include="Imagens\Frm_DemonstracaoKey.png" />
     <Content Include="Imagens\Frm_HelloWorld.ico" />
@@ -283,6 +285,7 @@
     <Content Include="Imagens\Frm_ValidaCPF2.png" />
     <Content Include="Imagens\Frm_ValidaSenha.ico" />
     <Content Include="Imagens\Frm_ValidaSenha.png" />
+    <Content Include="Imagens\LimparBarra.png" />
     <Content Include="Imagens\money.png" />
     <Content Include="Imagens\user.png" />
     <None Include="Resources\key.png" />
@@ -291,13 +294,13 @@
     <None Include="Resources\icons8-live-folder-80.png" />
   </ItemGroup>
   <ItemGroup>
+    <Folder Include="FormularioCurso3\" />
+  </ItemGroup>
+  <ItemGroup>
     <ProjectReference Include="..\CursoWindowsFormsLib\CursoWindowsFormsLib.csproj">
       <Project>{99d602a3-d569-47fc-bc83-62db1f30fc28}</Project>
       <Name>CursoWindowsFormsLib</Name>
     </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
-    <Folder Include="FormularioCurso3\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

@@ -7,6 +7,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.ComponentModel.DataAnnotations;
+using CursoWindowsFormsLib.Classes;
 
 namespace CursoWindowsForms
 {
@@ -67,6 +69,12 @@ namespace CursoWindowsForms
             Cmb_Estados.Items.Add("São Paulo(SP)");
             Cmb_Estados.Items.Add("Sergipe(SE)");
             Cmb_Estados.Items.Add("Tocantins(TO)");
+
+            tls_Principal.Items[0].ToolTipText = "Adicionar um cliente novo";
+            tls_Principal.Items[1].ToolTipText = "Encontrar um cliente";
+            tls_Principal.Items[2].ToolTipText = "Salvar o cliente que está cadastrando";
+            tls_Principal.Items[3].ToolTipText = "Excluir o cliente";
+            tls_Principal.Items[4].ToolTipText = "Limpar o formulário de cadastro";
         }
 
         private void Chk_TemPai_CheckedChanged(object sender, EventArgs e)
@@ -78,6 +86,23 @@ namespace CursoWindowsForms
             else
             {
                 Txt_NomePai.Enabled = true;
+            }
+        }
+
+        private void newToolStripButton_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                Cliente.Unit c = new Cliente.Unit();
+                c.Id = Txt_Codigo.Text;
+                c.ValidaClass();
+                MessageBox.Show("Cliente novo cadastrado com sucesso", "ByteBank", MessageBoxButtons.OK,
+                    MessageBoxIcon.Information);
+            }
+            catch (ValidationException ex)
+            {
+                MessageBox.Show(ex.Message, "ByteBank", MessageBoxButtons.OK,
+                    MessageBoxIcon.Error);
             }
         }
     }
