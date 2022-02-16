@@ -9,6 +9,9 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.ComponentModel.DataAnnotations;
 using CursoWindowsFormsLib.Classes;
+using Microsoft.VisualBasic;
+using CursoWindowsFormsLib;
+
 
 namespace CursoWindowsForms
 {
@@ -94,8 +97,9 @@ namespace CursoWindowsForms
             try
             {
                 Cliente.Unit c = new Cliente.Unit();
-                c.Id = Txt_Codigo.Text;
+                c = LeituraFormulario();
                 c.ValidaClass();
+                c.ValidaComplemento();
                 MessageBox.Show("Cliente novo cadastrado com sucesso", "ByteBank", MessageBoxButtons.OK,
                     MessageBoxIcon.Information);
             }
@@ -103,6 +107,102 @@ namespace CursoWindowsForms
             {
                 MessageBox.Show(ex.Message, "ByteBank", MessageBoxButtons.OK,
                     MessageBoxIcon.Error);
+            }
+            catch (Exception Ex)
+            {
+                MessageBox.Show(Ex.Message, "ByteBank", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        Cliente.Unit LeituraFormulario()
+        {
+            Cliente.Unit C = new Cliente.Unit();
+            C.Id = Txt_Codigo.Text;
+            C.Nome = Txt_NomeCliente.Text;
+            C.NomeMae = Txt_NomeMae.Text;
+            C.NomePai = Txt_NomePai.Text;
+            if (Chk_TemPai.Checked)
+            {
+                C.NaoTemPai = true;
+            }
+            else
+            {
+                C.NaoTemPai = false;
+            }
+            if (Rdb_Masculino.Checked)
+            {
+                C.Genero = 0;
+            }
+            if (Rdb_Feminino.Checked)
+            {
+                C.Genero = 1;
+            }
+            if (Rdb_Indefinido.Checked)
+            {
+                C.Genero = 2;
+            }
+            C.Cpf = Txt_CPF.Text;
+
+            C.Cep = Txt_CEP.Text;
+            C.Logradouro = Txt_Logradouro.Text;
+            C.Complemento = Txt_Complemento.Text;
+            C.Cidade = Txt_Cidade.Text;
+            C.Bairro = Txt_Bairro.Text;
+
+            if (Cmb_Estados.SelectedIndex < 0)
+            {
+                C.Estado = "";
+            }
+            else
+            {
+                C.Estado = Cmb_Estados.Items[Cmb_Estados.SelectedIndex].ToString();
+            }
+
+            C.Telefone = Txt_Telefone.Text;
+            C.Profissao = Txt_Profissao.Text;
+
+            if (Information.IsNumeric(Txt_RendaFamiliar.Text))
+            {
+                Double vRenda = Convert.ToDouble(Txt_RendaFamiliar.Text);
+                if (vRenda < 0)
+                {
+                    C.RendaFamiliar = 0;
+                }
+                else
+                {
+                    C.RendaFamiliar = vRenda;
+                }
+            }
+            return C;
+        }
+
+        private void Txt_CEP_Leave(object sender, EventArgs e)
+        {
+            string vCep = Txt_CEP.Text;
+            if (vCep != "")
+            {
+                if (vCep.Length == 8)
+                {
+                    if (Information.IsNumeric(vCep))
+                    {
+                        var vJson = Utilitarios.GeraJSONCEP(vCep);
+                        Cep.Unit CEP = new Cep.Unit();
+                        CEP = Cep.DesSerializedClassUnit(vJson);
+                        Txt_Logradouro.Text = CEP.logradouro;
+                        Txt_Bairro.Text = CEP.bairro;
+                        Txt_Cidade.Text = CEP.localidade;
+
+                        Cmb_Estados.SelectedIndex = -1;
+                        for (int i = 0; i <= Cmb_Estados.Items.Count - 1; i++)
+                        {
+                            var vPos = Strings.InStr(Cmb_Estados.Items[i].ToString(), "(" + CEP.uf + ")");
+                            if (vPos > 0)
+                            {
+                                Cmb_Estados.SelectedIndex = i;
+                            }
+                        }
+                    }
+                }
             }
         }
     }

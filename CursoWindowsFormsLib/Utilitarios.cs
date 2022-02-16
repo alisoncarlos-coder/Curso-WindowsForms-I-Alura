@@ -1,14 +1,36 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
+using System.Net;
 using System.Text;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 
-namespace CursoWindowsForms
+
+namespace CursoWindowsFormsLib
 {
     public class Utilitarios
     {
+
+        public static string GeraJSONCEP(string CEP)
+        {
+            System.Net.HttpWebRequest requisicao = (HttpWebRequest)WebRequest.Create("https://viacep.com.br/ws/" + CEP + "/json/");
+            HttpWebResponse resposta = (HttpWebResponse)requisicao.GetResponse();
+
+            int cont;
+            byte[] buffer = new byte[1000];
+            StringBuilder sb = new StringBuilder();
+            string temp;
+            Stream stream = resposta.GetResponseStream();
+            do
+            {
+                cont = stream.Read(buffer, 0, buffer.Length);
+                temp = Encoding.UTF8.GetString(buffer, 0, cont).Trim();
+                sb.Append(temp);
+            } while (cont > 0);
+            return sb.ToString();
+        }
 
         public static bool ValidaSenha(string senha)
         {
@@ -53,90 +75,89 @@ namespace CursoWindowsForms
             return cpf.EndsWith(digito);
         }
 
-    }
-
-    public class ChecaForcaSenha
-    {
-        public enum ForcaDaSenha
+        public class ChecaForcaSenha
         {
-            Inaceitavel,
-            Fraca,
-            Aceitavel,
-            Forte,
-            Segura
-        }
-
-        public int geraPontosSenha(string senha)
-        {
-            if (senha == null) return 0;
-            int pontosPorTamanho = GetPontoPorTamanho(senha);
-            int pontosPorMinusculas = GetPontoPorMinusculas(senha);
-            int pontosPorMaiusculas = GetPontoPorMaiusculas(senha);
-            int pontosPorDigitos = GetPontoPorDigitos(senha);
-            int pontosPorSimbolos = GetPontoPorSimbolos(senha);
-            int pontosPorRepeticao = GetPontoPorRepeticao(senha);
-            return pontosPorTamanho + pontosPorMinusculas +
-                pontosPorMaiusculas + pontosPorDigitos +
-                pontosPorSimbolos - pontosPorRepeticao;
-        }
-
-        private int GetPontoPorTamanho(string senha)
-        {
-            return Math.Min(10, senha.Length) * 7;
-        }
-
-        private int GetPontoPorMinusculas(string senha)
-        {
-            int rawplacar = senha.Length - Regex.Replace(senha, "[a-z]", "").Length;
-            return Math.Min(2, rawplacar) * 5;
-        }
-
-        private int GetPontoPorMaiusculas(string senha)
-        {
-            int rawplacar = senha.Length - Regex.Replace(senha, "[A-Z]", "").Length;
-            return Math.Min(2, rawplacar) * 5;
-        }
-
-        private int GetPontoPorDigitos(string senha)
-        {
-            int rawplacar = senha.Length - Regex.Replace(senha, "[0-9]", "").Length;
-            return Math.Min(2, rawplacar) * 6;
-        }
-
-        private int GetPontoPorSimbolos(string senha)
-        {
-            int rawplacar = Regex.Replace(senha, "[a-zA-Z0-9]", "").Length;
-            return Math.Min(2, rawplacar) * 5;
-        }
-
-        private int GetPontoPorRepeticao(string senha)
-        {
-            System.Text.RegularExpressions.Regex regex = new System.Text.RegularExpressions.Regex(@"(\w)*.*\1");
-            bool repete = regex.IsMatch(senha);
-            if (repete)
+            public enum ForcaDaSenha
             {
-                return 30;
+                Inaceitavel,
+                Fraca,
+                Aceitavel,
+                Forte,
+                Segura
             }
-            else
+
+            public int geraPontosSenha(string senha)
             {
-                return 0;
+                if (senha == null) return 0;
+                int pontosPorTamanho = GetPontoPorTamanho(senha);
+                int pontosPorMinusculas = GetPontoPorMinusculas(senha);
+                int pontosPorMaiusculas = GetPontoPorMaiusculas(senha);
+                int pontosPorDigitos = GetPontoPorDigitos(senha);
+                int pontosPorSimbolos = GetPontoPorSimbolos(senha);
+                int pontosPorRepeticao = GetPontoPorRepeticao(senha);
+                return pontosPorTamanho + pontosPorMinusculas +
+                    pontosPorMaiusculas + pontosPorDigitos +
+                    pontosPorSimbolos - pontosPorRepeticao;
             }
-        }
 
-        public ForcaDaSenha GetForcaDaSenha(string senha)
-        {
-            int placar = geraPontosSenha(senha);
+            private int GetPontoPorTamanho(string senha)
+            {
+                return Math.Min(10, senha.Length) * 7;
+            }
 
-            if (placar < 50)
-                return ForcaDaSenha.Inaceitavel;
-            else if (placar < 60)
-                return ForcaDaSenha.Fraca;
-            else if (placar < 80)
-                return ForcaDaSenha.Aceitavel;
-            else if (placar < 100)
-                return ForcaDaSenha.Forte;
-            else
-                return ForcaDaSenha.Segura;
+            private int GetPontoPorMinusculas(string senha)
+            {
+                int rawplacar = senha.Length - Regex.Replace(senha, "[a-z]", "").Length;
+                return Math.Min(2, rawplacar) * 5;
+            }
+
+            private int GetPontoPorMaiusculas(string senha)
+            {
+                int rawplacar = senha.Length - Regex.Replace(senha, "[A-Z]", "").Length;
+                return Math.Min(2, rawplacar) * 5;
+            }
+
+            private int GetPontoPorDigitos(string senha)
+            {
+                int rawplacar = senha.Length - Regex.Replace(senha, "[0-9]", "").Length;
+                return Math.Min(2, rawplacar) * 6;
+            }
+
+            private int GetPontoPorSimbolos(string senha)
+            {
+                int rawplacar = Regex.Replace(senha, "[a-zA-Z0-9]", "").Length;
+                return Math.Min(2, rawplacar) * 5;
+            }
+
+            private int GetPontoPorRepeticao(string senha)
+            {
+                System.Text.RegularExpressions.Regex regex = new System.Text.RegularExpressions.Regex(@"(\w)*.*\1");
+                bool repete = regex.IsMatch(senha);
+                if (repete)
+                {
+                    return 30;
+                }
+                else
+                {
+                    return 0;
+                }
+            }
+
+            public ForcaDaSenha GetForcaDaSenha(string senha)
+            {
+                int placar = geraPontosSenha(senha);
+
+                if (placar < 50)
+                    return ForcaDaSenha.Inaceitavel;
+                else if (placar < 60)
+                    return ForcaDaSenha.Fraca;
+                else if (placar < 80)
+                    return ForcaDaSenha.Aceitavel;
+                else if (placar < 100)
+                    return ForcaDaSenha.Forte;
+                else
+                    return ForcaDaSenha.Segura;
+            }
         }
     }
 }
