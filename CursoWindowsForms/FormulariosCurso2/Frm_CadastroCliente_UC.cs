@@ -117,6 +117,7 @@ namespace CursoWindowsForms
             }
         }
 
+        #region Operacao CRUD
         private void newToolStripButton_Click(object sender, EventArgs e)
         {
             try
@@ -125,39 +126,166 @@ namespace CursoWindowsForms
                 c = LeituraFormulario();
                 c.ValidaClass();
                 c.ValidaComplemento();
-                string clienteJSON = Cliente.SerializedClassUnit(c);
-                Fichario f = new Fichario("C:\\Users\\aliso\\Source\\Repos\\Curso-WindowsForms-I-Alura\\Fichario");
-                if (f.Status)
-                {
-                    f.Incluir(c.Id, clienteJSON);
-                    if (f.Status)
-                    {
-                        MessageBox.Show($"OK: {f.Mensagem}", "ByteBank", MessageBoxButtons.OK,
-                        MessageBoxIcon.Information);
-                    }
-                    else
-                    {
-                        MessageBox.Show($"ERROR: {f.Mensagem}", "ByteBank", MessageBoxButtons.OK,
-                        MessageBoxIcon.Error);
-                    }
-                }
-                else
-                {
-                    MessageBox.Show($"ERROR: {f.Mensagem}", "ByteBank", MessageBoxButtons.OK,
-                    MessageBoxIcon.Error);
-                }
-                
+                c.IncluirFichario("C:\\Users\\aliso\\Source\\Repos\\Curso-WindowsForms-I-Alura\\Fichario");
+                MessageBox.Show("Cliente incluído com sucesso!", "ByteBank", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
             catch (ValidationException ex)
             {
-                MessageBox.Show(ex.Message, "ByteBank", MessageBoxButtons.OK,
-                    MessageBoxIcon.Error);
+                MessageBox.Show(ex.Message, "ByteBank", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             catch (Exception Ex)
             {
                 MessageBox.Show(Ex.Message, "ByteBank", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
+
+        private void openToolStripButton_Click(object sender, EventArgs e)
+        {
+            if (Txt_Codigo.Text == "")
+            {
+                MessageBox.Show($"Código do cliente não pode ser vazio!", "ByteBank", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            else
+            {
+                Cliente.Unit c = new Cliente.Unit();
+                try
+                {
+                    c = c.PesquisarFichario(Txt_Codigo.Text, "C:\\Users\\aliso\\Source\\Repos\\Curso-WindowsForms-I-Alura\\Fichario");
+                    if (c != null)
+                    {
+                        EscreveFormulario(c);
+                    }
+                    else
+                    {
+                        MessageBox.Show($"Não foi possível localizar o cliente, pois o código {Txt_Codigo.Text} não existe", "ByteBank", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show($"ERROR: {ex.Message}", "ByteBank", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    limpaFormulario();
+                }
+            }
+        }
+
+        private void deletaToolStripButton_Click(object sender, EventArgs e)
+        {
+            if (Txt_Codigo.Text == "")
+            {
+                MessageBox.Show($"Código do cliente não pode ser vazio!", "ByteBank", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            else
+            {
+                Cliente.Unit c = new Cliente.Unit();
+                try
+                {
+                    c = c.PesquisarFichario(Txt_Codigo.Text, "C:\\Users\\aliso\\Source\\Repos\\Curso-WindowsForms-I-Alura\\Fichario");
+                    if (c == null)
+                    {
+                        MessageBox.Show($"Não foi possível localizar o cliente, pois o código {Txt_Codigo.Text} não existe", "ByteBank", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+                    else
+                    {
+                        EscreveFormulario(c);
+                    }
+
+                    var questionaExlusao = new Frm_Questao("ExcluirBarra", "Deseja excluir o cliente?");
+                    questionaExlusao.ShowDialog();
+                    if (questionaExlusao.DialogResult == DialogResult.Yes)
+                    {
+                        c.ExcluirFichario("C:\\Users\\aliso\\Source\\Repos\\Curso-WindowsForms-I-Alura\\Fichario");
+                        limpaFormulario();
+                    }
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show($"ERROR: {ex.Message}", "ByteBank", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    limpaFormulario();
+                }
+            }
+        }
+
+        private void saveToolStripButton_Click(object sender, EventArgs e)
+        {
+            if (Txt_Codigo.Text == "")
+            {
+                MessageBox.Show($"Código do cliente não pode ser vazio!", "ByteBank", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            else
+            {
+                try
+                {
+                    Cliente.Unit c = new Cliente.Unit();
+                    c = LeituraFormulario();
+                    c.ValidaClass();
+                    c.ValidaComplemento();
+                    c.AlterarFichario("C:\\Users\\aliso\\Source\\Repos\\Curso-WindowsForms-I-Alura\\Fichario");
+                }
+                catch (ValidationException ex)
+                {
+                    MessageBox.Show(ex.Message, "ByteBank", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+                catch (Exception Ex)
+                {
+                    MessageBox.Show(Ex.Message, "ByteBank", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+        }
+
+        private void btn_pesquisar_Click(object sender, EventArgs e)
+        {
+            Cliente.Unit c = new Cliente.Unit();
+            var lista = new List<string>();
+            try
+            {
+                lista = c.PesquisarTodosFichario("C:\\Users\\aliso\\Source\\Repos\\Curso-WindowsForms-I-Alura\\Fichario");
+                if (lista == null || lista.Count == 0)
+                {
+                    MessageBox.Show("Não existe registros nos fichario!", "ByteBank", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    limpaFormulario();
+                }
+                else
+                {
+                    var listaBusca = new List<List<string>>();
+                    foreach (var item in lista)
+                    {
+                        c = Cliente.DesSerializedClassUnit(item);
+                        listaBusca.Add(new List<string> { c.Id, c.Nome });
+                    }
+
+                    Frm_Busca frmBusca = new Frm_Busca(listaBusca);
+                    frmBusca.ShowDialog();
+                    if (frmBusca.DialogResult == DialogResult.OK)
+                    {
+                        try
+                        {
+                            var idSelecionado = frmBusca.idSelecionado;
+                            c = c.PesquisarFichario(idSelecionado, "C:\\Users\\aliso\\Source\\Repos\\Curso-WindowsForms-I-Alura\\Fichario");
+                            if (c == null)
+                            {
+                                MessageBox.Show($"Não existe a ficha {idSelecionado} !", "ByteBank", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            }
+                            else
+                            {
+                                EscreveFormulario(c);
+                            }
+                        }
+                        catch (Exception ex)
+                        {
+                            MessageBox.Show($"ERROR: {ex.Message}", "ByteBank", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            limpaFormulario();
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("ERR " + ex.Message, "ByteBank", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+
+        }
+
+        #endregion
 
         Cliente.Unit LeituraFormulario()
         {
@@ -256,57 +384,12 @@ namespace CursoWindowsForms
             limpaFormulario();
         }
 
-        private void openToolStripButton_Click(object sender, EventArgs e)
-        {
-            if (Txt_Codigo.Text == "")
-            {
-                MessageBox.Show($"Código do cliente não pode ser vazio!", "ByteBank", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-            else
-            {
-                Fichario f = new Fichario("C:\\Users\\aliso\\Source\\Repos\\Curso-WindowsForms-I-Alura\\Fichario");
-                if (f.Status)
-                {
-                    Cliente.Unit c = new Cliente.Unit();
-                    try
-                    {
-                       c = RetornaPesquisaCliente(f, Txt_Codigo.Text);
-                       EscreveFormulario(c);
-                    }
-                    catch (Exception ex)
-                    {
-                        MessageBox.Show($"ERROR: {f.Mensagem}", "ByteBank", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                        limpaFormulario();
-                    }
-                }
-                else
-                {
-                    MessageBox.Show($"ERROR: {f.Mensagem}", "ByteBank", MessageBoxButtons.OK,
-                    MessageBoxIcon.Error);
-                }
-            }
-            
-        }
-
-        private Cliente.Unit RetornaPesquisaCliente(Fichario f, string campo)
-        {
-            string clienteJSON = f.Pesquisar(campo);
-            if (f.Status)
-            {
-                return Cliente.DesSerializedClassUnit(clienteJSON);
-            }
-            else
-            {
-                throw new Exception();
-            }
-        }
-
         private void EscreveFormulario(Cliente.Unit c)
         {
             Txt_Codigo.Text = c.Id;
             Txt_NomeCliente.Text = c.Nome;
             Txt_NomeMae.Text = c.NomeMae;
-            if ( c.NaoTemPai == true)
+            if (c.NaoTemPai == true)
             {
                 Chk_TemPai.Checked = true;
                 Txt_NomePai.Text = "";
@@ -329,7 +412,7 @@ namespace CursoWindowsForms
             {
                 Rdb_Indefinido.Checked = true;
             }
-            
+
             Txt_CPF.Text = c.Cpf;
             Txt_CEP.Text = c.Cep;
             Txt_Logradouro.Text = c.Logradouro;
@@ -345,7 +428,7 @@ namespace CursoWindowsForms
             {
                 for (int i = 0; i < Cmb_Estados.Items.Count - 1; i++)
                 {
-                    if(c.Estado == Cmb_Estados.Items[i].ToString())
+                    if (c.Estado == Cmb_Estados.Items[i].ToString())
                     {
                         Cmb_Estados.SelectedIndex = i;
                     }
@@ -356,148 +439,6 @@ namespace CursoWindowsForms
             Txt_Profissao.Text = c.Profissao;
 
             Txt_RendaFamiliar.Text = c.RendaFamiliar.ToString();
-
-        }
-
-        private void deletaToolStripButton_Click(object sender, EventArgs e)
-        {
-            if (Txt_Codigo.Text == "")
-            {
-                MessageBox.Show($"Código do cliente não pode ser vazio!", "ByteBank", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-            else
-            {
-                Fichario f = new Fichario("C:\\Users\\aliso\\Source\\Repos\\Curso-WindowsForms-I-Alura\\Fichario");
-                if (f.Status)
-                {
-                    Cliente.Unit c = new Cliente.Unit();
-                    try
-                    {
-                        c = RetornaPesquisaCliente(f, Txt_Codigo.Text);
-                        EscreveFormulario(c);
-                    }
-                    catch (Exception ex)
-                    {
-                        MessageBox.Show($"ERROR: {f.Mensagem}", "ByteBank", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                        limpaFormulario();
-                        return;
-                    }
-
-                    var questionaExlusao = new Frm_Questao("ExcluirBarra", "Deseja excluir o cliente?");
-                    questionaExlusao.ShowDialog();
-                    if (questionaExlusao.DialogResult == DialogResult.Yes)
-                    {
-                        f.Excluir(c.Id);
-                        limpaFormulario();
-                    }
-                }
-                else
-                {
-                    MessageBox.Show($"ERROR: {f.Mensagem}", "ByteBank", MessageBoxButtons.OK,
-                    MessageBoxIcon.Error);
-                }
-            }
-        }
-
-        private void saveToolStripButton_Click(object sender, EventArgs e)
-        {
-            if (Txt_Codigo.Text == "")
-            {
-                MessageBox.Show($"Código do cliente não pode ser vazio!", "ByteBank", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-            else
-            {
-                try
-                {
-                    Cliente.Unit c = new Cliente.Unit();
-                    c = LeituraFormulario();
-                    c.ValidaClass();
-                    c.ValidaComplemento();
-                    string clienteJSON = Cliente.SerializedClassUnit(c);
-                    Fichario f = new Fichario("C:\\Users\\aliso\\Source\\Repos\\Curso-WindowsForms-I-Alura\\Fichario");
-                    if (f.Status)
-                    {
-                        f.Alterar(c.Id, clienteJSON);
-                        if (f.Status)
-                        {
-                            MessageBox.Show($"OK: {f.Mensagem}", "ByteBank", MessageBoxButtons.OK,
-                            MessageBoxIcon.Information);
-                        }
-                        else
-                        {
-                            MessageBox.Show($"ERROR: {f.Mensagem}", "ByteBank", MessageBoxButtons.OK,
-                            MessageBoxIcon.Error);
-                        }
-                    }
-                    else
-                    {
-                        MessageBox.Show($"ERROR: {f.Mensagem}", "ByteBank", MessageBoxButtons.OK,
-                        MessageBoxIcon.Error);
-                    }
-
-                }
-                catch (ValidationException ex)
-                {
-                    MessageBox.Show(ex.Message, "ByteBank", MessageBoxButtons.OK,
-                        MessageBoxIcon.Error);
-                }
-                catch (Exception Ex)
-                {
-                    MessageBox.Show(Ex.Message, "ByteBank", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                }
-            }
-        }
-
-        private void btn_pesquisar_Click(object sender, EventArgs e)
-        {
-            Fichario f = new Fichario("C:\\Users\\aliso\\Source\\Repos\\Curso-WindowsForms-I-Alura\\Fichario");
-            if (f.Status)
-            {
-                var lista = new List<string>();
-                try
-                {
-                    lista = f.PesquisarTodos();
-                    if (f.Status)
-                    {
-                        var listaBusca = new List<List<string>>();
-                        foreach (var item in lista)
-                        {
-                            Cliente.Unit c = Cliente.DesSerializedClassUnit(item);
-                            listaBusca.Add(new List<string> { c.Id, c.Nome });
-                        }
-                        Frm_Busca frmBusca = new Frm_Busca(listaBusca);
-                        frmBusca.ShowDialog();
-                        if (frmBusca.DialogResult == DialogResult.OK)
-                        {
-                            Cliente.Unit clienteUnit = new Cliente.Unit();
-                            try
-                            {
-                                var idSelecionado = frmBusca.idSelecionado;
-                                clienteUnit = RetornaPesquisaCliente(f, idSelecionado);
-                                EscreveFormulario(clienteUnit);
-                            }
-                            catch (Exception ex)
-                            {
-                                MessageBox.Show($"ERROR: {f.Mensagem}", "ByteBank", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                                limpaFormulario();
-                            }
-                        }
-                    }
-                    else
-                    {
-                        MessageBox.Show("ERR " + f.Mensagem, "ByteBank", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    }
-                }
-                catch (Exception ex)
-                {
-                    MessageBox.Show("ERR " + ex.Message, "ByteBank", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                }
-            }
-            else
-            {
-                MessageBox.Show($"ERROR: {f.Mensagem}", "ByteBank", MessageBoxButtons.OK,
-                MessageBoxIcon.Error);
-            }
 
         }
     }

@@ -105,7 +105,7 @@ namespace CursoWindowsFormsLib
                 this.Mensagem = $"Erro ao encontrar as fichas dos clientes. {ex.Message}";
             }
 
-            throw new Exception();
+            throw new Exception("Não houve retorno no fichario.");
         }
 
 

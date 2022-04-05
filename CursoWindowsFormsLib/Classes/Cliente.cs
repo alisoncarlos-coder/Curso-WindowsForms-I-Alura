@@ -108,6 +108,109 @@ namespace CursoWindowsFormsLib.Classes
                     throw new Exception("CPF inválido.");
                 }
             }
+
+            #region Operacao CRUD
+            public void IncluirFichario(string conexao)
+            {
+                string clienteJSON = Cliente.SerializedClassUnit(this);
+                Fichario f = new Fichario(conexao);
+                if (f.Status)
+                {
+                    f.Incluir(this.Id, clienteJSON);
+                    if (!f.Status)
+                    {
+                        throw new Exception(f.Mensagem);
+                    }
+                }
+                else
+                {
+                    throw new Exception(f.Mensagem);
+                }
+            }
+
+            public Unit PesquisarFichario(string id, string conexao)
+            {
+                Fichario f = new Fichario("C:\\Users\\aliso\\Source\\Repos\\Curso-WindowsForms-I-Alura\\Fichario");
+                if (f.Status)
+                {
+                    string clienteJSON = f.Pesquisar(id);
+                    if (!f.Status)
+                    {
+                        throw new Exception(f.Mensagem);
+                    }
+
+                    return Cliente.DesSerializedClassUnit(clienteJSON);
+                }
+                else
+                {
+                    throw new Exception(f.Mensagem);
+                }
+            }
+
+            public void AlterarFichario(string conexao)
+            {
+                string clienteJSON = Cliente.SerializedClassUnit(this);
+                Fichario f = new Fichario("C:\\Users\\aliso\\Source\\Repos\\Curso-WindowsForms-I-Alura\\Fichario");
+                if (f.Status)
+                {
+                    f.Alterar(this.Id, clienteJSON);
+                    if (!f.Status)
+                    {
+                        throw new Exception(f.Mensagem);
+                    }
+                }
+                else
+                {
+                    throw new Exception(f.Mensagem);
+                }
+            }
+
+            public void ExcluirFichario(string conexao)
+            {
+                Fichario f = new Fichario("C:\\Users\\aliso\\Source\\Repos\\Curso-WindowsForms-I-Alura\\Fichario");
+                if (f.Status)
+                {
+                    f.Excluir(this.Id);
+                    if (!(f.Status))
+                    {
+                        throw new Exception(f.Mensagem);
+                    }
+                }
+                else
+                {
+                    throw new Exception(f.Mensagem);
+                }
+            }
+
+            public List<string> PesquisarTodosFichario(string conexao)
+            {
+                Fichario f = new Fichario(conexao);
+                if (f.Status)
+                {
+                    var lista = new List<string>();
+                    try
+                    {
+                        lista = f.PesquisarTodos();
+                        if (!f.Status)
+                        {
+                            throw new Exception(f.Mensagem);
+                        }
+                        return lista;
+                    }
+                    catch (Exception ex)
+                    {
+                        throw new Exception(f.Mensagem);
+                    }
+                }
+                else
+                {
+                    throw new Exception(f.Mensagem);
+                }
+
+            }
+
+            #endregion 
+
         }
 
         public class List
