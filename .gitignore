@@ -338,3 +338,7 @@ ASALocalRun/
 
 # BeatPulse healthcheck temp database
 healthchecksdb
+/Fichario/000005.json
+/Fichario/000004.json
+/Fichario/000002.json
+/Fichario/000001.json

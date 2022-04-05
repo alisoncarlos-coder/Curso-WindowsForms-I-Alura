@@ -47,6 +47,7 @@
   <ItemGroup>
     <Compile Include="Cep.cs" />
     <Compile Include="Classes\Cliente.cs" />
+    <Compile Include="Databases\Fichario.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Utilitarios.cs" />
   </ItemGroup>

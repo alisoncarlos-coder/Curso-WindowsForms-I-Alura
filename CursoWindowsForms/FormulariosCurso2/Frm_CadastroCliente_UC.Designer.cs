@@ -71,6 +71,7 @@
             this.saveToolStripButton = new System.Windows.Forms.ToolStripButton();
             this.deletaToolStripButton = new System.Windows.Forms.ToolStripButton();
             this.limpaToolStripButton = new System.Windows.Forms.ToolStripButton();
+            this.btn_pesquisar = new System.Windows.Forms.Button();
             this.Grp_Codigo.SuspendLayout();
             this.Grp_DadosPessoais.SuspendLayout();
             this.Grp_Genero.SuspendLayout();
@@ -284,10 +285,11 @@
             // 
             // Grp_Codigo
             // 
+            this.Grp_Codigo.Controls.Add(this.btn_pesquisar);
             this.Grp_Codigo.Controls.Add(this.Txt_Codigo);
             this.Grp_Codigo.Location = new System.Drawing.Point(12, 48);
             this.Grp_Codigo.Name = "Grp_Codigo";
-            this.Grp_Codigo.Size = new System.Drawing.Size(224, 53);
+            this.Grp_Codigo.Size = new System.Drawing.Size(304, 53);
             this.Grp_Codigo.TabIndex = 52;
             this.Grp_Codigo.TabStop = false;
             this.Grp_Codigo.Text = "groupBox1";
@@ -468,6 +470,7 @@
             this.openToolStripButton.Name = "openToolStripButton";
             this.openToolStripButton.Size = new System.Drawing.Size(23, 22);
             this.openToolStripButton.Text = "&Open";
+            this.openToolStripButton.Click += new System.EventHandler(this.openToolStripButton_Click);
             // 
             // saveToolStripButton
             // 
@@ -477,6 +480,7 @@
             this.saveToolStripButton.Name = "saveToolStripButton";
             this.saveToolStripButton.Size = new System.Drawing.Size(23, 22);
             this.saveToolStripButton.Text = "&Save";
+            this.saveToolStripButton.Click += new System.EventHandler(this.saveToolStripButton_Click);
             // 
             // deletaToolStripButton
             // 
@@ -486,6 +490,7 @@
             this.deletaToolStripButton.Name = "deletaToolStripButton";
             this.deletaToolStripButton.Size = new System.Drawing.Size(23, 22);
             this.deletaToolStripButton.Text = "toolStripButton1";
+            this.deletaToolStripButton.Click += new System.EventHandler(this.deletaToolStripButton_Click);
             // 
             // limpaToolStripButton
             // 
@@ -495,6 +500,17 @@
             this.limpaToolStripButton.Name = "limpaToolStripButton";
             this.limpaToolStripButton.Size = new System.Drawing.Size(23, 22);
             this.limpaToolStripButton.Text = "toolStripButton2";
+            this.limpaToolStripButton.Click += new System.EventHandler(this.limpaToolStripButton_Click);
+            // 
+            // btn_pesquisar
+            // 
+            this.btn_pesquisar.Location = new System.Drawing.Point(221, 17);
+            this.btn_pesquisar.Name = "btn_pesquisar";
+            this.btn_pesquisar.Size = new System.Drawing.Size(75, 23);
+            this.btn_pesquisar.TabIndex = 2;
+            this.btn_pesquisar.Text = "button1";
+            this.btn_pesquisar.UseVisualStyleBackColor = true;
+            this.btn_pesquisar.Click += new System.EventHandler(this.btn_pesquisar_Click);
             // 
             // Frm_CadastroCliente_UC
             // 
@@ -568,5 +584,6 @@
         private System.Windows.Forms.ToolStripButton saveToolStripButton;
         private System.Windows.Forms.ToolStripButton deletaToolStripButton;
         private System.Windows.Forms.ToolStripButton limpaToolStripButton;
+        private System.Windows.Forms.Button btn_pesquisar;
     }
 }

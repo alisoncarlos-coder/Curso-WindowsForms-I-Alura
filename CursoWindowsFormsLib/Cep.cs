@@ -22,6 +22,11 @@ namespace CursoWindowsFormsLib
             public string gia { get; set; }
         }
 
+        public static string SerializedClassUnit(Unit unit)
+        {
+            return JsonConvert.SerializeObject(unit);
+        }
+
         public static Unit DesSerializedClassUnit(string vJson)
         {
             return JsonConvert.DeserializeObject<Unit>(vJson);
