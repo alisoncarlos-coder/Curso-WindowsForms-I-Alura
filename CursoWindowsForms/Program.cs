@@ -14,6 +14,8 @@ namespace CursoWindowsForms
         [STAThread]
         static void Main()
         {
+            //Teste criando uma nova branch e subindo a alteração no github.
+            
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
             Application.Run(new Frm_Principal_Menu_UC());
