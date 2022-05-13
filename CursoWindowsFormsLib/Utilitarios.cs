@@ -42,6 +42,9 @@ namespace CursoWindowsFormsLib
         }
         public static bool Valida(string cpf)
         {  
+            //Adicionando esse comentario para efetuar testes de branchs e merge
+            //Esses comentarios só deve aparecer se fazer o merge da master com a branch teste-hotfix
+
             int[] multiplicador1 = new int[9] { 10, 9, 8, 7, 6, 5, 4, 3, 2 };
             int[] multiplicador2 = new int[10] { 11, 10, 9, 8, 7, 6, 5, 4, 3, 2 };
             string tempCpf;
