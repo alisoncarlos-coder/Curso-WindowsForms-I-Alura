@@ -17,6 +17,8 @@ namespace CursoWindowsForms
             //Teste criando uma nova branch e subindo a alteração no github.
             
             //Tetse criando nova branch-hotfix
+
+            //Alteração final.
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
             Application.Run(new Frm_Principal_Menu());
